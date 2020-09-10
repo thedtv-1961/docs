@@ -19,3 +19,18 @@ KHAI BÁO vs ĐỊNH NGHĨA:
   run (int speed) {
     // TODO: Implement run function.
   }
+
+e và E:
+  - e = 10
+  - VD: 5.647e3 => dịch sang phải 3 số  5647
+  - VD: 5.647e-1 => dịch sang trái 1 số  0.5647
+  
+KHAI BÁO:
+  - int a = (3, 6, 5, 7) => a = 7 vì chỉ lấy số cuối cùng
+  
+FOREACH:
+  - ko làm việc với con trỏ trỏ đến mảng, vì để lặp đc thì `for` phải biết đc kích thước của mảng trong khi đó con trỏ của mảng lại ko cho biết kích thướng của mảng
+  - 
+  - for(<type> <var_name> : <list | array ...>) {}
+  - để có tốc độ xử lý nhanh và biến ko bị copy (vùng nhớphải tạo biến ảo) thì nên xử dụng tham chiếu `&`, VD: for(auto &item : arr)
+  - để có tốc độ xử lý nhanh và biến ko bị copy + ko thay đổi giá trị biến thì dùng thêm từ khóa `const`: for(const auto &item : arr)
