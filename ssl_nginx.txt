@@ -4,10 +4,10 @@ $ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /xxx/nginx-ss
 - Country Name (2 letter code) [AU]:VN
 - State or Province Name (full name) [Some-State]:DANANG VN
 - Locality Name (eg, city) []:DANANG
-- Organization Name (eg, company) [Internet Widgits Pty Ltd]:BRANDIT . LTD                            
-- Organizational Unit Name (eg, section) []:BRANDIT
-- Common Name (e.g. server FQDN or YOUR name) []:brandit.test
-- Email Address []:localhost@brandit.test 
+- Organization Name (eg, company) [Internet Widgits Pty Ltd]:HOLTELMNG . LTD                            
+- Organizational Unit Name (eg, section) []:HOLTELMNG
+- Common Name (e.g. server FQDN or YOUR name) []:holtelmng.test
+- Email Address []:localhost@holtelmng.test 
 
 2/ Configure NGINX to use SSL:
 $ sudo nano /etc/nginx/snippets/self-signed.conf
@@ -39,7 +39,7 @@ add_header X-XSS-Protection "1; mode=block";
 
 5/ Config site to use SSL:
 
-$ sudo nano /etc/nginx/sites-available/www.brandit.test
+$ sudo nano /etc/nginx/sites-available/www.holtelmng.test
 
 server {
     listen 443 ssl;
@@ -47,9 +47,9 @@ server {
     include snippets/self-signed.conf;
     include snippets/ssl-params.conf;
 
-    server_name brandit.test www.brandit.test;
+    server_name holtelmng.test www.holtelmng.test;
 
-    root /var/www/html/brandit.test;
+    root /var/www/html/holtelmng.test;
     index index.php;
 
 }
@@ -58,8 +58,8 @@ server {
     listen 8000;
     listen [::]:8000;
 
-    server_name brandit.test www.brandit.test;
-    root /var/www/html/brandit.test;
+    server_name holtelmng.test www.holtelmng.test;
+    root /var/www/html/holtelmng.test;
 
     location / {
         try_files $uri /index.php$is_args$args;
@@ -83,7 +83,7 @@ server {
     access_log /var/log/nginx/project_access.log;
 }
 
-$ sudo ln -s /etc/nginx/sites-available/www.brandit.test /etc/nginx/sites-enabled/
+$ sudo ln -s /etc/nginx/sites-available/www.holtelmng.test /etc/nginx/sites-enabled/
 
 6/ Check the profiles
 
@@ -98,12 +98,12 @@ $ sudo systemctl restart nginx
 8/ Config host:
 
 $ sudo nano /etc/hosts
-127.0.0.1 brandit.test
+127.0.0.1 holtelmng.test
 
 sudo service php7.3-fpm restart
 sudo service nginx restart
 
-
-Nginx error log:
+---------------------------
+Nginx test:
 
 sudo nginx -t
